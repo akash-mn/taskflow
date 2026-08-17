@@ -1,0 +1,62 @@
+// TaskFlow — Prisma schema
+// Relational model: Board 1—N Column 1—N Task
+// Provider: PostgreSQL (works great with Supabase's connection string)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  // Supabase (and other poolers like pgbouncer) need a separate, non-pooled
+  // connection for running migrations. If you're using a plain Postgres
+  // instance without a pooler, DIRECT_URL can just equal DATABASE_URL.
+  directUrl = env("DIRECT_URL")
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model Board {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  columns Column[]
+
+  @@map("boards")
+}
+
+model Column {
+  id        String   @id @default(cuid())
+  name      String
+  order     Int      @default(0)
+  boardId   String   @map("board_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  board Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  tasks Task[]
+
+  @@index([boardId])
+  @@map("columns")
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  priority    Priority @default(MEDIUM)
+  columnId    String   @map("column_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  column Column @relation(fields: [columnId], references: [id], onDelete: Cascade)
+
+  @@index([columnId])
+  @@index([priority])
+  @@map("tasks")
+}
