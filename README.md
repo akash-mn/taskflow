@@ -1,8 +1,8 @@
 # TaskFlow
-![TaskFlow Dashboard – Dark Mode](<screenshots/Screenshot (3499).png>)  
-*Dark theme view of the board.*  
+![TaskFlow Dashboard – Dark Mode](./public/screenshots/Screenshot%20(3499).png)
+*Dark theme view of the board.*
 
-![TaskFlow Dashboard – Light Mode](<screenshots/Screenshot (3500).png>)  
+![TaskFlow Dashboard – Light Mode](./public/screenshots/Screenshot%20(3500).png)
 *Light theme view with the same tasks.*
 
 A lightweight Trello-style task board — Board → Columns → Tasks — built for the
