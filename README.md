@@ -1,9 +1,9 @@
 # TaskFlow
-![TaskFlow Dashboard Overview](screenshots/Screenshot (3499).png)
-*Overview of the TaskFlow board showing columns and tasks.*
+![TaskFlow Dashboard – Dark Mode](<screenshots/Screenshot (3499).png>)  
+*Dark theme view of the board.*  
 
-![TaskFlow Task List](screenshots/Screenshot (3500).png)
-*Detailed view of tasks with priority and column placement.*
+![TaskFlow Dashboard – Light Mode](<screenshots/Screenshot (3500).png>)  
+*Light theme view with the same tasks.*
 
 A lightweight Trello-style task board — Board → Columns → Tasks — built for the
 take-home assignment. Next.js 16 (App Router) frontend and backend in one
